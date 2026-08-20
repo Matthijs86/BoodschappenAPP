@@ -1,23 +1,31 @@
 {
+    "id": "/BoodschappenAPP/",
     "name": "Mijn Boodschappenlijst",
     "short_name": "Boodschappenlijst",
     "description": "Mijn persoonlijke boodschappenlijst",
-    "start_url": "./",
-    "scope": "./",
+
+    "start_url": "/BoodschappenAPP/",
+    "scope": "/BoodschappenAPP/",
+
     "display": "standalone",
+
     "background_color": "#020617",
     "theme_color": "#3d8bfd",
+
     "orientation": "portrait",
+
     "icons": [
         {
-            "src": "./icon-192x192(1).png",
+            "src": "/BoodschappenAPP/icon-192x192(1).png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
-            "src": "./icon-512x512(1).png",
+            "src": "/BoodschappenAPP/icon-512x512(1).png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ]
 }

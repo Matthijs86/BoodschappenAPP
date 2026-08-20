@@ -10,8 +10,8 @@ const APP_BESTANDEN = [
     "/BoodschappenAPP/style.css",
     "/BoodschappenAPP/script.js",
     "/BoodschappenAPP/manifest.json",
-    "/BoodschappenAPP/icon-192x192(1).png",
-    "/BoodschappenAPP/icon-512x512(1).png"
+    "/BoodschappenAPP/icon-192.png",
+    "/BoodschappenAPP/icon-512.png"
 ];
 
 

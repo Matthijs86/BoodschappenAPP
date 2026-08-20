@@ -2,14 +2,16 @@
 // BOODSCHAPPENLIJST PWA - SERVICE WORKER
 // ======================================
 
-const CACHE_NAME = "boodschappenlijst-v7";
+const CACHE_NAME = "boodschappenlijst-v8";
 
 const APP_BESTANDEN = [
-    "/Shopping-List/",
-    "/Shopping-List/index.html",
-    "/Shopping-List/style.css",
-    "/Shopping-List/script.js",
-    "/Shopping-List/manifest.json"
+    "/BoodschappenAPP/",
+    "/BoodschappenAPP/index.html",
+    "/BoodschappenAPP/style.css",
+    "/BoodschappenAPP/script.js",
+    "/BoodschappenAPP/manifest.json",
+    "/BoodschappenAPP/icon-192x192(1).png",
+    "/BoodschappenAPP/icon-512x512(1).png"
 ];
 
 
@@ -17,127 +19,96 @@ const APP_BESTANDEN = [
 // INSTALL
 // ======================================
 
-self.addEventListener(
-    "install",
-    event => {
+self.addEventListener("install", event => {
 
-        event.waitUntil(
+    event.waitUntil(
 
-            caches.open(CACHE_NAME)
-                .then(cache => {
+        caches.open(CACHE_NAME)
+            .then(cache => {
 
-                    return cache.addAll(
-                        APP_BESTANDEN
-                    );
+                return cache.addAll(APP_BESTANDEN);
 
-                })
+            })
 
-        );
+    );
 
-        self.skipWaiting();
+    self.skipWaiting();
 
-    }
-);
+});
 
 
 // ======================================
 // ACTIVATE
 // ======================================
 
-self.addEventListener(
-    "activate",
-    event => {
+self.addEventListener("activate", event => {
 
-        event.waitUntil(
+    event.waitUntil(
 
-            caches.keys()
-                .then(cacheNamen => {
+        caches.keys()
+            .then(cacheNamen => {
 
-                    return Promise.all(
+                return Promise.all(
 
-                        cacheNamen
-                            .filter(
-                                naam =>
-                                    naam !== CACHE_NAME
-                            )
-                            .map(
-                                naam =>
-                                    caches.delete(naam)
-                            )
+                    cacheNamen
+                        .filter(naam => naam !== CACHE_NAME)
+                        .map(naam => caches.delete(naam))
 
-                    );
+                );
 
-                })
+            })
 
-        );
+    );
 
-        self.clients.claim();
+    self.clients.claim();
 
-    }
-);
+});
 
 
 // ======================================
 // FETCH
 // ======================================
 
-self.addEventListener(
-    "fetch",
-    event => {
+self.addEventListener("fetch", event => {
 
-        event.respondWith(
+    event.respondWith(
 
-            caches.match(event.request)
-                .then(cachedResponse => {
+        caches.match(event.request)
+            .then(cachedResponse => {
 
-                    if (cachedResponse) {
+                if (cachedResponse) {
+                    return cachedResponse;
+                }
 
-                        return cachedResponse;
+                return fetch(event.request)
+                    .then(response => {
 
-                    }
-
-
-                    return fetch(event.request)
-                        .then(response => {
-
-                            /*
-                             * Alleen geldige responses
-                             * cachen.
-                             */
-
-                            if (
-                                !response ||
-                                response.status !== 200 ||
-                                response.type === "opaque"
-                            ) {
-
-                                return response;
-
-                            }
-
-
-                            const responseKopie =
-                                response.clone();
-
-
-                            caches.open(CACHE_NAME)
-                                .then(cache => {
-
-                                    cache.put(
-                                        event.request,
-                                        responseKopie
-                                    );
-
-                                });
-
-
+                        if (
+                            !response ||
+                            response.status !== 200 ||
+                            response.type === "opaque"
+                        ) {
                             return response;
+                        }
 
-                        });
+                        const responseKopie = response.clone();
 
-                })
+                        caches.open(CACHE_NAME)
+                            .then(cache => {
 
-        );
+                                cache.put(
+                                    event.request,
+                                    responseKopie
+                                );
 
-    }
-);
+                            });
+
+                        return response;
+
+                    });
+
+            })
+
+    );
+
+});

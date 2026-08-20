@@ -8,6 +8,11 @@
     "scope": "/BoodschappenAPP/",
 
     "display": "standalone",
+    "display_override": [
+        "window-controls-overlay",
+        "standalone"
+    ],
+
     "background_color": "#020617",
     "theme_color": "#3d8bfd",
     "orientation": "portrait",
@@ -25,5 +30,5 @@
             "type": "image/png",
             "purpose": "any"
         }
-    ],
+    ]
 }

@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#3d8bfd">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#3d8bfd">
 
     <title>Mijn Boodschappenlijst</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -21,7 +21,6 @@
 
         <div class="invoer">
 
-            <!-- Hoeveelheid -->
             <input
                 type="number"
                 id="aantalInput"
@@ -31,16 +30,12 @@
                 placeholder="Aantal"
             >
 
-            <!-- Eenheid -->
             <select id="eenheidInput">
-
                 <option value="st">stuks</option>
                 <option value="g">gram</option>
                 <option value="ml">ml</option>
-
             </select>
 
-            <!-- Product -->
             <input
                 type="text"
                 id="productInput"
@@ -48,69 +43,53 @@
                 autocomplete="off"
             >
 
-            <!-- Toevoegen -->
             <button id="toevoegen">
                 Toevoegen
             </button>
 
         </div>
 
-
-        <!-- Boodschappenlijst -->
-
         <ul id="boodschappenLijst"></ul>
-
-
-        <!-- Lege lijst -->
 
         <p id="legeLijst">
             Je boodschappenlijst is nog leeg.
         </p>
 
-    <button id="allesWissen">
-    🗑️ Alles wissen
-    </button>
+        <button id="allesWissen">
+            🗑️ Alles wissen
+        </button>
 
     </main>
 
-<script src="script.js"></script>
+    <script src="./script.js"></script>
 
-<script>
-    if ("serviceWorker" in navigator) {
+    <script>
+        if ("serviceWorker" in navigator) {
 
-        window.addEventListener(
-            "load",
-            () => {
+            window.addEventListener("load", () => {
 
-                navigator.serviceWorker.register(
-                    "/Shopping-List/sw.js"
-                )
-                .then(
-                    registration => {
+                navigator.serviceWorker.register("./service-worker.js")
+                    .then(registration => {
 
                         console.log(
                             "Service Worker actief:",
                             registration.scope
                         );
 
-                    }
-                )
-                .catch(
-                    error => {
+                    })
+                    .catch(error => {
 
                         console.error(
                             "Service Worker fout:",
                             error
                         );
 
-                    }
-                );
+                    });
 
-            }
-        );
+            });
 
-    }
-</script>
+        }
+    </script>
 
 </body>
 

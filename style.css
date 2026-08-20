@@ -1,0 +1,696 @@
+* {
+    box-sizing: border-box;
+}
+
+
+/* ==========================
+   BODY
+========================== */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #f5f5f5;
+
+    background:
+        linear-gradient(
+            135deg,
+            #020617,
+            #0f172a,
+            #1e293b,
+            #111827
+        );
+}
+
+
+/* ==========================
+   APP
+========================== */
+
+.app {
+    width: 100%;
+    max-width: 650px;
+
+    padding: 35px;
+
+    background:
+        rgba(30, 30, 30, 0.96);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.6);
+}
+
+
+/* ==========================
+   TITEL
+========================== */
+
+h1 {
+    margin:
+        0 0 30px;
+
+    text-align: center;
+
+    font-size: 32px;
+}
+
+
+/* ==========================
+   INVOER
+========================== */
+
+.invoer {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==========================
+   AANTAL INPUT
+========================== */
+
+#aantalInput {
+    width: 85px;
+
+    padding:
+        14px 10px;
+
+    border:
+        2px solid #444;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #292929;
+
+    color: white;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+#aantalInput:focus {
+    border-color: #3d8bfd;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(61, 139, 253, 0.15);
+}
+
+
+/* ==========================
+   EENHEID SELECT
+========================== */
+
+#eenheidInput {
+    width: 105px;
+
+    padding:
+        14px 10px;
+
+    border:
+        2px solid #444;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #292929;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+#eenheidInput:focus {
+    border-color: #3d8bfd;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(61, 139, 253, 0.15);
+}
+
+
+/* ==========================
+   PRODUCT INPUT
+========================== */
+
+#productInput {
+    flex: 1;
+
+    min-width: 0;
+
+    padding:
+        14px 16px;
+
+    border:
+        2px solid #444;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #292929;
+
+    color: white;
+
+    font-size: 16px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+#productInput::placeholder {
+    color: #888;
+}
+
+
+#productInput:focus {
+    border-color: #3d8bfd;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(61, 139, 253, 0.15);
+}
+
+
+/* ==========================
+   TOEVOEGEN BUTTON
+========================== */
+
+#toevoegen {
+    padding:
+        0 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #3d8bfd;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+#toevoegen:hover {
+    background: #246edb;
+
+    transform:
+        translateY(-2px);
+}
+
+
+#toevoegen:active {
+    transform:
+        scale(0.97);
+}
+
+
+/* ==========================
+   LIJST
+========================== */
+
+#boodschappenLijst {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+}
+
+
+/* ==========================
+   PRODUCT
+========================== */
+
+.product {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    margin-bottom: 10px;
+
+    background: #292929;
+
+    border:
+        1px solid #3d3d3d;
+
+    border-radius: 12px;
+
+    transition:
+        background 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.product:hover {
+    background: #333333;
+}
+
+
+/* ==========================
+   CHECKBOX
+========================== */
+
+.product input[type="checkbox"] {
+    width: 20px;
+
+    height: 20px;
+
+    flex-shrink: 0;
+
+    accent-color: #3d8bfd;
+
+    cursor: pointer;
+}
+
+
+/* ==========================
+   PRODUCTNAAM
+========================== */
+
+.product-naam {
+    flex: 1;
+
+    min-width: 0;
+
+    font-size: 17px;
+
+    word-break: break-word;
+}
+
+
+.product.gekocht .product-naam {
+    text-decoration: line-through;
+
+    color: #777;
+}
+
+
+/* ==========================
+   AANTAL BEDIENING
+========================== */
+
+.aantal-bediening {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+}
+
+
+/* ==========================
+   HOEVEELHEID
+========================== */
+
+.hoeveelheid {
+    min-width: 65px;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================
+   PLUS / MIN KNOPPEN
+========================== */
+
+.aantal-knop {
+    width: 34px;
+
+    height: 34px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #3d8bfd;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.aantal-knop:hover {
+    background: #246edb;
+
+    transform:
+        scale(1.05);
+}
+
+
+.aantal-knop:active {
+    transform:
+        scale(0.92);
+}
+
+
+/* ==========================
+   DELETE BUTTON
+========================== */
+
+.verwijder {
+    padding:
+        8px 11px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc3545;
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.verwijder:hover {
+    background: #b02a37;
+
+    transform:
+        scale(1.05);
+}
+
+
+.verwijder:active {
+    transform:
+        scale(0.95);
+}
+
+
+/* ==========================
+   GEKOCHT
+========================== */
+
+.product.gekocht {
+    opacity: 0.55;
+}
+
+
+/* ==========================
+   LEGE LIJST
+========================== */
+
+#legeLijst {
+    margin:
+        25px 0 5px;
+
+    text-align: center;
+
+    color: #888;
+
+    font-size: 15px;
+}
+
+
+/* ==========================
+   MOBIEL
+========================== */
+
+@media (max-width: 600px) {
+
+    .app {
+        padding:
+            25px 18px;
+
+        border-radius: 18px;
+    }
+
+
+    h1 {
+        font-size: 27px;
+    }
+
+
+    /* ==========================
+       INVOER MOBIEL
+    ========================== */
+
+    .invoer {
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 10px;
+    }
+
+
+    #aantalInput {
+        width: 100%;
+    }
+
+
+    #eenheidInput {
+        width: 100%;
+    }
+
+
+    #productInput {
+        grid-column:
+            1 / -1;
+
+        width: 100%;
+    }
+
+
+    #toevoegen {
+        grid-column:
+            1 / -1;
+
+        padding: 14px;
+    }
+
+
+    /* ==========================
+       PRODUCT MOBIEL
+    ========================== */
+
+    .product {
+        display: grid;
+
+        grid-template-columns:
+            24px 1fr auto auto;
+
+        gap: 10px;
+
+        padding: 12px;
+    }
+
+
+    .product-naam {
+        align-self: center;
+    }
+
+
+    .aantal-bediening {
+        gap: 4px;
+    }
+
+
+    .hoeveelheid {
+        min-width: 55px;
+
+        font-size: 14px;
+    }
+
+
+    .aantal-knop {
+        width: 32px;
+
+        height: 32px;
+
+        font-size: 20px;
+    }
+
+
+    .verwijder {
+        padding:
+            7px 9px;
+    }
+
+}
+
+
+/* ==========================
+   KLEINERE TELEFOONS
+========================== */
+
+@media (max-width: 400px) {
+
+    .app {
+        padding:
+            20px 14px;
+    }
+
+
+    h1 {
+        font-size: 24px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .product {
+        grid-template-columns:
+            22px 1fr;
+
+        gap: 8px;
+    }
+
+
+    .product-naam {
+        font-size: 16px;
+    }
+
+
+    .aantal-bediening {
+        grid-column:
+            2;
+
+        justify-content: flex-start;
+    }
+
+
+    .verwijder {
+        grid-column:
+            2;
+
+        justify-self: start;
+    }
+
+}
+
+/* ==========================
+   ALLES WISSEN
+========================== */
+
+#allesWissen {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #dc3545;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+#allesWissen:hover {
+    background: #b02a37;
+
+    transform:
+        translateY(-2px);
+}
+
+
+#allesWissen:active {
+    transform:
+        scale(0.97);
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3d8bfd">
+
+    <title>Mijn Boodschappenlijst</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <h1>🛒 Mijn Boodschappenlijst</h1>
+
+        <div class="invoer">
+
+            <!-- Hoeveelheid -->
+            <input
+                type="number"
+                id="aantalInput"
+                value="1"
+                min="1"
+                step="1"
+                placeholder="Aantal"
+            >
+
+            <!-- Eenheid -->
+            <select id="eenheidInput">
+
+                <option value="st">stuks</option>
+                <option value="g">gram</option>
+                <option value="ml">ml</option>
+
+            </select>
+
+            <!-- Product -->
+            <input
+                type="text"
+                id="productInput"
+                placeholder="Bijvoorbeeld: Melk"
+                autocomplete="off"
+            >
+
+            <!-- Toevoegen -->
+            <button id="toevoegen">
+                Toevoegen
+            </button>
+
+        </div>
+
+
+        <!-- Boodschappenlijst -->
+
+        <ul id="boodschappenLijst"></ul>
+
+
+        <!-- Lege lijst -->
+
+        <p id="legeLijst">
+            Je boodschappenlijst is nog leeg.
+        </p>
+
+    <button id="allesWissen">
+    🗑️ Alles wissen
+    </button>
+
+    </main>
+
+<script src="script.js"></script>
+
+<script>
+    if ("serviceWorker" in navigator) {
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                navigator.serviceWorker.register(
+                    "/Shopping-List/sw.js"
+                )
+                .then(
+                    registration => {
+
+                        console.log(
+                            "Service Worker actief:",
+                            registration.scope
+                        );
+
+                    }
+                )
+                .catch(
+                    error => {
+
+                        console.error(
+                            "Service Worker fout:",
+                            error
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+</script>
+
+</body>
+
+</html>

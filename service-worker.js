@@ -2,7 +2,7 @@
 // BOODSCHAPPENLIJST PWA - SERVICE WORKER
 // ======================================
 
-const CACHE_NAME = "boodschappenlijst-v8";
+const CACHE_NAME = "boodschappenlijst-v9";
 
 const APP_BESTANDEN = [
     "/BoodschappenAPP/",
@@ -22,18 +22,11 @@ const APP_BESTANDEN = [
 self.addEventListener("install", event => {
 
     event.waitUntil(
-
         caches.open(CACHE_NAME)
-            .then(cache => {
-
-                return cache.addAll(APP_BESTANDEN);
-
-            })
-
+            .then(cache => cache.addAll(APP_BESTANDEN))
     );
 
     self.skipWaiting();
-
 });
 
 
@@ -44,24 +37,19 @@ self.addEventListener("install", event => {
 self.addEventListener("activate", event => {
 
     event.waitUntil(
-
         caches.keys()
             .then(cacheNamen => {
 
                 return Promise.all(
-
                     cacheNamen
                         .filter(naam => naam !== CACHE_NAME)
                         .map(naam => caches.delete(naam))
-
                 );
 
             })
-
     );
 
     self.clients.claim();
-
 });
 
 
@@ -70,6 +58,15 @@ self.addEventListener("activate", event => {
 // ======================================
 
 self.addEventListener("fetch", event => {
+
+    // Alleen HTTP/HTTPS verzoeken verwerken.
+    // Chrome-extensies en andere protocollen overslaan.
+    if (
+        event.request.url.startsWith("chrome-extension://") ||
+        !event.request.url.startsWith("http")
+    ) {
+        return;
+    }
 
     event.respondWith(
 
@@ -95,17 +92,27 @@ self.addEventListener("fetch", event => {
 
                         caches.open(CACHE_NAME)
                             .then(cache => {
-
                                 cache.put(
                                     event.request,
                                     responseKopie
                                 );
-
+                            })
+                            .catch(error => {
+                                console.log(
+                                    "Cache overslaan:",
+                                    error
+                                );
                             });
 
                         return response;
-
                     });
+
+            })
+            .catch(() => {
+
+                return caches.match(
+                    "/BoodschappenAPP/index.html"
+                );
 
             })
 

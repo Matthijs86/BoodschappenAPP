@@ -2,7 +2,7 @@
 // BOODSCHAPPENLIJST PWA - SERVICE WORKER
 // ======================================
 
-const CACHE_NAME = "boodschappenlijst-v10";
+const CACHE_NAME = "boodschappenlijst-v11";
 
 const APP_BESTANDEN = [
     "/BoodschappenAPP/",
@@ -10,8 +10,8 @@ const APP_BESTANDEN = [
     "/BoodschappenAPP/style.css",
     "/BoodschappenAPP/script.js",
     "/BoodschappenAPP/manifest.json",
-    "/BoodschappenAPP/icon-192.png",
-    "/BoodschappenAPP/icon-512.png"
+    "/BoodschappenAPP/icon-192x192.png",
+    "/BoodschappenAPP/icon-512x512.png"
 ];
 
 

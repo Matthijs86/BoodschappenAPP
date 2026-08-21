@@ -10,208 +10,231 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <link
-        rel="manifest"
-        href="./manifest.json"
-    >
-
     <meta
         name="theme-color"
         content="#3d8bfd"
     >
 
-    <title>Mijn Boodschappenlijst</title>
+    <link
+        rel="manifest"
+        href="./manifest.json"
+    >
 
     <link
         rel="stylesheet"
         href="./style.css"
     >
 
+    <title>Mijn Boodschappenlijst</title>
+
 </head>
 
 
 <body>
 
-    <main class="app">
 
-        <!-- ==========================
-             TITEL
-        =========================== -->
-
-        <h1>
-            🛒 Mijn Boodschappenlijst
-        </h1>
+<main class="app">
 
 
-        <!-- ==========================
-             INVOER
-        =========================== -->
+    <!-- ==========================
+         TITEL
+    =========================== -->
 
-        <div class="invoer">
-
-            <!-- AANTAL -->
-
-            <input
-                type="number"
-                id="aantalInput"
-                value="1"
-                min="1"
-                step="1"
-                placeholder="Aantal"
-            >
+    <h1>
+        🛒 Mijn Boodschappenlijst
+    </h1>
 
 
-            <!-- EENHEID -->
+    <!-- ==========================
+         INVOER
+    =========================== -->
 
-            <select id="eenheidInput">
-
-                <option value="st">
-                    stuks
-                </option>
-
-                <option value="g">
-                    gram
-                </option>
-
-                <option value="ml">
-                    ml
-                </option>
-
-            </select>
+    <div class="invoer">
 
 
-            <!-- PRODUCT -->
+        <!-- AANTAL -->
 
-            <input
-                type="text"
-                id="productInput"
-                placeholder="Bijvoorbeeld: Melk"
-                autocomplete="off"
-            >
-
-
-            <!-- WINKEL -->
-
-            <select id="winkelInput">
-
-                <option value="Albert Heijn">
-                    🛒 Albert Heijn
-                </option>
-
-                <option value="Aldi">
-                    🛒 Aldi
-                </option>
-
-                <option value="Toko">
-                    🏮 Toko
-                </option>
-
-                <option value="Jumbo">
-                    🛒 Jumbo
-                </option>
-
-                <option value="Lidl">
-                    🛒 Lidl
-                </option>
-
-            </select>
+        <input
+            type="number"
+            id="aantalInput"
+            value="1"
+            min="1"
+            step="1"
+            placeholder="Aantal"
+            aria-label="Aantal"
+        >
 
 
-            <!-- TOEVOEGEN -->
+        <!-- EENHEID -->
 
-            <button id="toevoegen">
-                + Toevoegen
-            </button>
+        <select
+            id="eenheidInput"
+            aria-label="Eenheid"
+        >
 
-        </div>
+            <option value="st">
+                stuks
+            </option>
 
+            <option value="g">
+                gram
+            </option>
 
-        <!-- ==========================
-             BOODSCHAPPENLIJST
-        =========================== -->
+            <option value="ml">
+                ml
+            </option>
 
-        <div id="boodschappenLijst"></div>
-
-
-        <!-- ==========================
-             LEGE LIJST
-        =========================== -->
-
-        <p id="legeLijst">
-
-            Je boodschappenlijst is nog leeg.
-
-        </p>
+        </select>
 
 
-        <!-- ==========================
-             ALLES WISSEN
-        =========================== -->
+        <!-- PRODUCT -->
 
-        <button id="allesWissen">
+        <input
+            type="text"
+            id="productInput"
+            placeholder="Bijvoorbeeld: Melk"
+            autocomplete="off"
+            aria-label="Product"
+        >
 
-            🗑️ Alles wissen
 
+        <!-- WINKEL -->
+
+        <select
+            id="winkelInput"
+            aria-label="Winkel"
+        >
+
+            <option value="Albert Heijn">
+                🛒 Albert Heijn
+            </option>
+
+            <option value="Aldi">
+                🟦 Aldi
+            </option>
+
+            <option value="Toko">
+                🌶️ Toko
+            </option>
+
+            <option value="Jumbo">
+                🟡 Jumbo
+            </option>
+
+            <option value="Lidl">
+                🔵 Lidl
+            </option>
+
+        </select>
+
+
+        <!-- TOEVOEGEN -->
+
+        <button
+            id="toevoegen"
+            type="button"
+        >
+            ➕ Toevoegen
         </button>
 
 
-        <!-- ==========================
-             FOOTER
-        =========================== -->
-
-        <div class="footer">
-
-            Made by Matthijs Karst Boersma
-
-        </div>
-
-    </main>
+    </div>
 
 
     <!-- ==========================
-         JAVASCRIPT
+         BOODSCHAPPEN
     =========================== -->
 
-    <script src="./script.js"></script>
+    <div
+        id="winkelsContainer"
+        class="winkels-container"
+    ></div>
 
 
     <!-- ==========================
-         SERVICE WORKER
+         LEGE LIJST
     =========================== -->
 
-    <script>
+    <p id="legeLijst">
 
-        if ("serviceWorker" in navigator) {
+        Je boodschappenlijst is nog leeg.
 
-            window.addEventListener(
-                "load",
-                () => {
+    </p>
 
-                    navigator.serviceWorker
-                        .register("./service-worker.js")
-                        .then(registration => {
 
-                            console.log(
-                                "Service Worker actief:",
-                                registration.scope
-                            );
+    <!-- ==========================
+         ALLES WISSEN
+    =========================== -->
 
-                        })
-                        .catch(error => {
+    <button
+        id="allesWissen"
+        type="button"
+    >
+        🗑️ Alles wissen
+    </button>
 
-                            console.error(
-                                "Service Worker fout:",
-                                error
-                            );
 
-                        });
+    <!-- ==========================
+         FOOTER
+    =========================== -->
 
-                }
-            );
+    <div class="made-by">
+
+        Made by Matthijs Karst Boersma
+
+    </div>
+
+
+</main>
+
+
+<script src="./script.js"></script>
+
+
+<!-- ==========================
+     SERVICE WORKER
+=========================== -->
+
+<script>
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+                .then(
+                    registration => {
+
+                        console.log(
+                            "Service Worker actief:",
+                            registration.scope
+                        );
+
+                    }
+                )
+                .catch(
+                    error => {
+
+                        console.error(
+                            "Service Worker fout:",
+                            error
+                        );
+
+                    }
+                );
 
         }
+    );
 
-    </script>
+}
+
+</script>
+
 
 </body>
 

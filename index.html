@@ -2,79 +2,45 @@
 <html lang="nl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="manifest" href="./manifest.json">
-    <meta name="theme-color" content="#3d8bfd">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link
+        rel="manifest"
+        href="./manifest.json"
+    >
+
+    <meta
+        name="theme-color"
+        content="#3d8bfd"
+    >
 
     <title>Mijn Boodschappenlijst</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link
+        rel="stylesheet"
+        href="./style.css"
+    >
+
 </head>
+
 
 <body>
 
     <main class="app">
 
-        <h1>🛒 Mijn Boodschappenlijst</h1>
-
-
         <!-- ==========================
-             WINKEL KIEZEN
+             TITEL
         =========================== -->
 
-        <section class="winkel-sectie">
-
-            <h2>🏪 Winkel</h2>
-
-            <div class="winkel-knoppen">
-
-                <button
-                    class="winkel-knop"
-                    data-winkel="Albert Heijn"
-                >
-                    🟦 Albert Heijn
-                </button>
-
-                <button
-                    class="winkel-knop"
-                    data-winkel="Aldi"
-                >
-                    🟩 Aldi
-                </button>
-
-                <button
-                    class="winkel-knop"
-                    data-winkel="Toko"
-                >
-                    🌶️ Toko
-                </button>
-
-                <button
-                    class="winkel-knop"
-                    data-winkel="Jumbo"
-                >
-                    🟨 Jumbo
-                </button>
-
-                <button
-                    class="winkel-knop"
-                    data-winkel="Lidl"
-                >
-                    🔵 Lidl
-                </button>
-
-            </div>
-
-            <button
-                id="alleWinkelsKnop"
-                class="alle-winkels-knop actief"
-            >
-                🛒 Alle winkels
-            </button>
-
-        </section>
+        <h1>
+            🛒 Mijn Boodschappenlijst
+        </h1>
 
 
         <!-- ==========================
@@ -82,6 +48,8 @@
         =========================== -->
 
         <div class="invoer">
+
+            <!-- AANTAL -->
 
             <input
                 type="number"
@@ -91,6 +59,9 @@
                 step="1"
                 placeholder="Aantal"
             >
+
+
+            <!-- EENHEID -->
 
             <select id="eenheidInput">
 
@@ -108,6 +79,9 @@
 
             </select>
 
+
+            <!-- PRODUCT -->
+
             <input
                 type="text"
                 id="productInput"
@@ -115,34 +89,58 @@
                 autocomplete="off"
             >
 
+
+            <!-- WINKEL -->
+
+            <select id="winkelInput">
+
+                <option value="Albert Heijn">
+                    🛒 Albert Heijn
+                </option>
+
+                <option value="Aldi">
+                    🛒 Aldi
+                </option>
+
+                <option value="Toko">
+                    🏮 Toko
+                </option>
+
+                <option value="Jumbo">
+                    🛒 Jumbo
+                </option>
+
+                <option value="Lidl">
+                    🛒 Lidl
+                </option>
+
+            </select>
+
+
+            <!-- TOEVOEGEN -->
+
             <button id="toevoegen">
-                ➕ Toevoegen
+                + Toevoegen
             </button>
 
         </div>
 
 
         <!-- ==========================
-             GESELECTEERDE WINKEL
+             BOODSCHAPPENLIJST
         =========================== -->
 
-        <div
-            id="gekozenWinkel"
-            class="gekozen-winkel"
-        >
-            🛒 Alle winkels
-        </div>
+        <div id="boodschappenLijst"></div>
 
 
         <!-- ==========================
-             BOODSCHAPPEN
+             LEGE LIJST
         =========================== -->
 
-        <ul id="boodschappenLijst"></ul>
-
-
         <p id="legeLijst">
+
             Je boodschappenlijst is nog leeg.
+
         </p>
 
 
@@ -151,7 +149,9 @@
         =========================== -->
 
         <button id="allesWissen">
+
             🗑️ Alles wissen
+
         </button>
 
 
@@ -160,11 +160,17 @@
         =========================== -->
 
         <div class="footer">
+
             Made by Matthijs Karst Boersma
+
         </div>
 
     </main>
 
+
+    <!-- ==========================
+         JAVASCRIPT
+    =========================== -->
 
     <script src="./script.js"></script>
 
@@ -183,26 +189,22 @@
 
                     navigator.serviceWorker
                         .register("./service-worker.js")
-                        .then(
-                            registration => {
+                        .then(registration => {
 
-                                console.log(
-                                    "Service Worker actief:",
-                                    registration.scope
-                                );
+                            console.log(
+                                "Service Worker actief:",
+                                registration.scope
+                            );
 
-                            }
-                        )
-                        .catch(
-                            error => {
+                        })
+                        .catch(error => {
 
-                                console.error(
-                                    "Service Worker fout:",
-                                    error
-                                );
+                            console.error(
+                                "Service Worker fout:",
+                                error
+                            );
 
-                            }
-                        );
+                        });
 
                 }
             );

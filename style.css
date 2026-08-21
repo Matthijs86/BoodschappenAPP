@@ -2,16 +2,21 @@
     box-sizing: border-box;
 }
 
+
 /* ==========================
    BODY
 ========================== */
 
 body {
+
     margin: 0;
+
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     padding: 20px;
@@ -21,15 +26,15 @@ body {
         Helvetica,
         sans-serif;
 
-    color: #f5f5f5;
+    color: #f5f7fa;
 
     background:
         linear-gradient(
             135deg,
-            #020617,
             #0f172a,
             #1e293b,
-            #111827
+            #263449,
+            #172033
         );
 }
 
@@ -39,23 +44,25 @@ body {
 ========================== */
 
 .app {
+
     width: 100%;
+
     max-width: 650px;
 
     padding: 35px;
 
     background:
-        rgba(30, 30, 30, 0.96);
+        rgba(42, 47, 58, 0.97);
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.08);
+        rgba(255, 255, 255, 0.12);
 
     border-radius: 24px;
 
     box-shadow:
         0 20px 60px
-        rgba(0, 0, 0, 0.6);
+        rgba(0, 0, 0, 0.45);
 
     animation:
         appBinnenkomen 0.5s ease;
@@ -69,14 +76,23 @@ body {
 @keyframes appBinnenkomen {
 
     from {
+
         opacity: 0;
-        transform: translateY(15px);
+
+        transform:
+            translateY(15px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
+
 }
 
 
@@ -85,12 +101,14 @@ body {
 ========================== */
 
 h1 {
+
     margin:
         0 0 30px;
 
     text-align: center;
 
     font-size: 34px;
+
     font-weight: 900;
 
     letter-spacing: -0.5px;
@@ -98,34 +116,231 @@ h1 {
     background:
         linear-gradient(
             90deg,
-            #3d8bfd,
-            #8b5cf6,
-            #3d8bfd
+            #38bdf8,
+            #818cf8,
+            #22c55e,
+            #38bdf8
         );
 
-    background-size: 200% auto;
+    background-size:
+        250% auto;
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip:
+        text;
 
-    color: transparent;
+    background-clip:
+        text;
+
+    color:
+        transparent;
 
     animation:
-        titelKleur 4s linear infinite;
+        titelKleur 5s linear infinite;
 }
 
-
-/* Titel kleur animatie */
 
 @keyframes titelKleur {
 
     0% {
-        background-position: 0% center;
+
+        background-position:
+            0% center;
+
     }
 
     100% {
-        background-position: 200% center;
+
+        background-position:
+            250% center;
+
     }
+
+}
+
+
+/* ==========================
+   WINKEL SECTIE
+========================== */
+
+.winkel-sectie {
+
+    margin-bottom: 25px;
+
+    padding: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 16px;
+}
+
+
+.winkel-sectie h2 {
+
+    margin:
+        0 0 14px;
+
+    font-size: 18px;
+
+    color: #f8fafc;
+
+}
+
+
+/* ==========================
+   WINKEL KNOPPEN
+========================== */
+
+.winkel-knoppen {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+
+.winkel-knop {
+
+    padding: 12px 10px;
+
+    border:
+        2px solid
+        #475569;
+
+    border-radius: 10px;
+
+    background:
+        #334155;
+
+    color: #f8fafc;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.winkel-knop:hover {
+
+    background:
+        #3f4f65;
+
+    border-color:
+        #60a5fa;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(59, 130, 246, 0.2);
+}
+
+
+.winkel-knop.actief {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #3b82f6
+        );
+
+    border-color:
+        #60a5fa;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(96, 165, 250, 0.2),
+
+        0 6px 18px
+        rgba(59, 130, 246, 0.3);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* ==========================
+   ALLE WINKELS
+========================== */
+
+.alle-winkels-knop {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border:
+        2px solid
+        #64748b;
+
+    border-radius: 10px;
+
+    background:
+        #475569;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.alle-winkels-knop:hover {
+
+    background:
+        #526277;
+
+    border-color:
+        #93c5fd;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.alle-winkels-knop.actief {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0891b2,
+            #06b6d4
+        );
+
+    border-color:
+        #67e8f9;
+
+    box-shadow:
+        0 5px 18px
+        rgba(6, 182, 212, 0.25);
 }
 
 
@@ -134,39 +349,40 @@ h1 {
 ========================== */
 
 .invoer {
+
     display: flex;
 
     gap: 10px;
 
-    margin-bottom: 25px;
+    margin-bottom: 12px;
 }
 
 
 /* ==========================
-   AANTAL INPUT
+   INPUTS
 ========================== */
 
-#aantalInput {
-
-    width: 85px;
-
-    padding:
-        14px 10px;
+#aantalInput,
+#eenheidInput,
+#productInput {
 
     border:
-        2px solid #444;
+        2px solid
+        #4b5563;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
     outline: none;
 
-    background: #292929;
+    background:
+        #374151;
 
-    color: white;
+    color:
+        #ffffff;
 
-    font-size: 16px;
-
-    text-align: center;
+    font-size:
+        16px;
 
     transition:
         border-color 0.2s ease,
@@ -175,21 +391,16 @@ h1 {
 }
 
 
-#aantalInput:focus {
+#aantalInput {
 
-    border-color: #3d8bfd;
+    width: 85px;
 
-    box-shadow:
-        0 0 0 3px
-        rgba(61, 139, 253, 0.15);
+    padding:
+        14px 10px;
 
-    transform: translateY(-1px);
+    text-align: center;
 }
 
-
-/* ==========================
-   EENHEID
-========================== */
 
 #eenheidInput {
 
@@ -198,40 +409,9 @@ h1 {
     padding:
         14px 10px;
 
-    border:
-        2px solid #444;
-
-    border-radius: 10px;
-
-    outline: none;
-
-    background: #292929;
-
-    color: white;
-
-    font-size: 16px;
-
     cursor: pointer;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
 }
 
-
-#eenheidInput:focus {
-
-    border-color: #3d8bfd;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(61, 139, 253, 0.15);
-}
-
-
-/* ==========================
-   PRODUCT INPUT
-========================== */
 
 #productInput {
 
@@ -241,41 +421,29 @@ h1 {
 
     padding:
         14px 16px;
-
-    border:
-        2px solid #444;
-
-    border-radius: 10px;
-
-    outline: none;
-
-    background: #292929;
-
-    color: white;
-
-    font-size: 16px;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.15s ease;
 }
 
 
 #productInput::placeholder {
-    color: #888;
+
+    color:
+        #a8b0bd;
 }
 
 
+#aantalInput:focus,
+#eenheidInput:focus,
 #productInput:focus {
 
-    border-color: #3d8bfd;
+    border-color:
+        #38bdf8;
 
     box-shadow:
         0 0 0 3px
-        rgba(61, 139, 253, 0.15);
+        rgba(56, 189, 248, 0.15);
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
 
 
@@ -290,7 +458,8 @@ h1 {
 
     border: none;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
     background:
         linear-gradient(
@@ -299,13 +468,17 @@ h1 {
             #22c55e
         );
 
-    color: white;
+    color:
+        white;
 
-    font-size: 16px;
+    font-size:
+        16px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     box-shadow:
         0 5px 15px
@@ -324,7 +497,7 @@ h1 {
         linear-gradient(
             135deg,
             #15803d,
-            #16a34a
+            #22c55e
         );
 
     transform:
@@ -344,16 +517,55 @@ h1 {
 
 
 /* ==========================
+   GEKOZEN WINKEL
+========================== */
+
+.gekozen-winkel {
+
+    margin-bottom:
+        14px;
+
+    padding:
+        9px 12px;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(56, 189, 248, 0.10);
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.25);
+
+    color:
+        #7dd3fc;
+
+    font-size:
+        14px;
+
+    font-weight:
+        bold;
+
+    text-align:
+        center;
+}
+
+
+/* ==========================
    LIJST
 ========================== */
 
 #boodschappenLijst {
 
-    list-style: none;
+    list-style:
+        none;
 
-    padding: 0;
+    padding:
+        0;
 
-    margin: 0;
+    margin:
+        0;
 }
 
 
@@ -363,22 +575,30 @@ h1 {
 
 .product {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 12px;
+    gap:
+        12px;
 
-    padding: 14px;
+    padding:
+        14px;
 
-    margin-bottom: 10px;
+    margin-bottom:
+        10px;
 
-    background: #292929;
+    background:
+        #374151;
 
     border:
-        1px solid #3d3d3d;
+        1px solid
+        #4b5563;
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
     transition:
         background 0.2s ease,
@@ -394,23 +614,35 @@ h1 {
 @keyframes productBinnen {
 
     from {
-        opacity: 0;
-        transform: translateX(-10px);
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-10px);
+
     }
 
     to {
-        opacity: 1;
-        transform: translateX(0);
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+
     }
+
 }
 
 
 .product:hover {
 
-    background: #333333;
+    background:
+        #414b5b;
 
     border-color:
-        rgba(61, 139, 253, 0.35);
+        rgba(56, 189, 248, 0.45);
 
     transform:
         translateX(2px);
@@ -423,15 +655,20 @@ h1 {
 
 .product input[type="checkbox"] {
 
-    width: 20px;
+    width:
+        20px;
 
-    height: 20px;
+    height:
+        20px;
 
-    flex-shrink: 0;
+    flex-shrink:
+        0;
 
-    accent-color: #3d8bfd;
+    accent-color:
+        #22c55e;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     transition:
         transform 0.15s ease;
@@ -446,18 +683,39 @@ h1 {
 
 
 /* ==========================
+   NAAM CONTAINER
+========================== */
+
+.naam-container {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+}
+
+
+/* ==========================
    PRODUCTNAAM
 ========================== */
 
 .product-naam {
 
-    flex: 1;
+    font-size:
+        17px;
 
-    min-width: 0;
-
-    font-size: 17px;
-
-    word-break: break-word;
+    word-break:
+        break-word;
 }
 
 
@@ -466,7 +724,25 @@ h1 {
     text-decoration:
         line-through;
 
-    color: #777;
+    color:
+        #9ca3af;
+}
+
+
+/* ==========================
+   PRODUCT WINKEL
+========================== */
+
+.product-winkel {
+
+    color:
+        #7dd3fc;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
 }
 
 
@@ -476,13 +752,17 @@ h1 {
 
 .aantal-bediening {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 6px;
+    gap:
+        6px;
 
-    flex-shrink: 0;
+    flex-shrink:
+        0;
 }
 
 
@@ -492,17 +772,23 @@ h1 {
 
 .hoeveelheid {
 
-    min-width: 65px;
+    min-width:
+        65px;
 
-    text-align: center;
+    text-align:
+        center;
 
-    font-size: 16px;
+    font-size:
+        16px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 }
 
 
@@ -512,33 +798,47 @@ h1 {
 
 .aantal-knop {
 
-    width: 34px;
+    width:
+        34px;
 
-    height: 34px;
+    height:
+        34px;
 
-    padding: 0;
+    padding:
+        0;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    background: #3d8bfd;
+    background:
+        #3d8bfd;
 
-    color: white;
+    color:
+        white;
 
-    font-size: 22px;
+    font-size:
+        22px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    line-height: 1;
+    line-height:
+        1;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
     transition:
         background 0.2s ease,
@@ -549,7 +849,8 @@ h1 {
 
 .aantal-knop:hover {
 
-    background: #246edb;
+    background:
+        #2563eb;
 
     transform:
         scale(1.08);
@@ -576,19 +877,26 @@ h1 {
     padding:
         8px 11px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    background: #dc3545;
+    background:
+        #ef4444;
 
-    color: white;
+    color:
+        white;
 
-    font-size: 15px;
+    font-size:
+        15px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    flex-shrink: 0;
+    flex-shrink:
+        0;
 
     transition:
         background 0.2s ease,
@@ -599,14 +907,15 @@ h1 {
 
 .verwijder:hover {
 
-    background: #b02a37;
+    background:
+        #dc2626;
 
     transform:
         scale(1.07);
 
     box-shadow:
         0 4px 10px
-        rgba(220, 53, 69, 0.3);
+        rgba(239, 68, 68, 0.3);
 }
 
 
@@ -623,7 +932,8 @@ h1 {
 
 .product.gekocht {
 
-    opacity: 0.55;
+    opacity:
+        0.55;
 }
 
 
@@ -636,11 +946,14 @@ h1 {
     margin:
         25px 0 5px;
 
-    text-align: center;
+    text-align:
+        center;
 
-    color: #888;
+    color:
+        #aeb7c5;
 
-    font-size: 15px;
+    font-size:
+        15px;
 }
 
 
@@ -650,25 +963,35 @@ h1 {
 
 #allesWissen {
 
-    width: 100%;
+    width:
+        100%;
 
-    margin-top: 15px;
+    margin-top:
+        15px;
 
-    padding: 13px;
+    padding:
+        13px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
-    background: #dc3545;
+    background:
+        #ef4444;
 
-    color: white;
+    color:
+        white;
 
-    font-size: 16px;
+    font-size:
+        16px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     transition:
         background 0.2s ease,
@@ -679,14 +1002,15 @@ h1 {
 
 #allesWissen:hover {
 
-    background: #b02a37;
+    background:
+        #dc2626;
 
     transform:
         translateY(-2px);
 
     box-shadow:
         0 6px 15px
-        rgba(220, 53, 69, 0.25);
+        rgba(239, 68, 68, 0.25);
 }
 
 
@@ -701,43 +1025,27 @@ h1 {
    FOOTER
 ========================== */
 
-/* ==========================
-   MADE BY
-========================== */
+.footer {
 
-.app::after {
-    content: "Made by Matthijs Karst Boersma";
+    margin-top:
+        20px;
 
-    display: block;
+    text-align:
+        center;
 
-    margin-top: 20px;
+    font-size:
+        12px;
 
-    text-align: center;
+    font-weight:
+        700;
 
-    font-size: 12px;
+    letter-spacing:
+        0.8px;
 
-    font-weight: 700;
-
-    letter-spacing: 0.8px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #3d8bfd,
-            #8b5cf6,
-            #3d8bfd
-        );
-
-    background-size: 200% auto;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    animation:
-        titelKleur 4s linear infinite;
+    color:
+        #94a3b8;
 }
+
 
 /* ==========================
    MOBIEL
@@ -747,30 +1055,70 @@ h1 {
 
     body {
 
-        padding: 10px;
+        padding:
+            10px;
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
     }
 
 
     .app {
 
-        margin-top: 10px;
+        margin-top:
+            10px;
 
         padding:
             25px 18px;
 
-        border-radius: 18px;
+        border-radius:
+            18px;
     }
 
 
     h1 {
 
-        font-size: 27px;
+        font-size:
+            27px;
 
-        line-height: 1.15;
+        line-height:
+            1.15;
 
-        margin-bottom: 25px;
+        margin-bottom:
+            25px;
+    }
+
+
+    /* ==========================
+       WINKELS MOBIEL
+    ========================== */
+
+    .winkel-sectie {
+
+        padding:
+            14px;
+
+    }
+
+
+    .winkel-knoppen {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:
+            8px;
+    }
+
+
+    .winkel-knop {
+
+        min-height:
+            46px;
+
+        font-size:
+            14px;
+
     }
 
 
@@ -780,23 +1128,28 @@ h1 {
 
     .invoer {
 
-        display: grid;
+        display:
+            grid;
 
         grid-template-columns:
             1fr 1fr;
 
-        gap: 12px;
+        gap:
+            12px;
     }
 
 
     #aantalInput,
     #eenheidInput {
 
-        width: 100%;
+        width:
+            100%;
 
-        min-height: 50px;
+        min-height:
+            50px;
 
-        font-size: 17px;
+        font-size:
+            17px;
     }
 
 
@@ -805,14 +1158,14 @@ h1 {
         grid-column:
             1 / -1;
 
-        width: 100%;
+        width:
+            100%;
 
-        min-height: 52px;
+        min-height:
+            52px;
 
-        font-size: 17px;
-
-        padding:
-            14px 16px;
+        font-size:
+            17px;
     }
 
 
@@ -821,11 +1174,14 @@ h1 {
         grid-column:
             1 / -1;
 
-        min-height: 52px;
+        min-height:
+            52px;
 
-        padding: 14px;
+        padding:
+            14px;
 
-        font-size: 17px;
+        font-size:
+            17px;
     }
 
 
@@ -835,46 +1191,57 @@ h1 {
 
     .product {
 
-        display: grid;
+        display:
+            grid;
 
         grid-template-columns:
             24px 1fr auto auto;
 
-        gap: 10px;
+        gap:
+            10px;
 
-        padding: 13px 10px;
+        padding:
+            13px 10px;
     }
 
 
     .product-naam {
 
-        align-self: center;
+        align-self:
+            center;
 
-        font-size: 16px;
+        font-size:
+            16px;
     }
 
 
     .aantal-bediening {
 
-        gap: 4px;
+        gap:
+            4px;
     }
 
 
     .hoeveelheid {
 
-        min-width: 55px;
+        min-width:
+            55px;
 
-        font-size: 14px;
+        font-size:
+            14px;
     }
 
 
     .aantal-knop {
 
-        width: 34px;
+        width:
+            34px;
 
-        height: 34px;
+        height:
+            34px;
 
-        font-size: 20px;
+        font-size:
+            20px;
     }
 
 
@@ -883,16 +1250,20 @@ h1 {
         padding:
             8px 10px;
 
-        min-height: 34px;
+        min-height:
+            34px;
     }
 
 
     #allesWissen {
 
-        min-height: 50px;
+        min-height:
+            50px;
 
-        font-size: 16px;
+        font-size:
+            16px;
     }
+
 }
 
 
@@ -911,9 +1282,21 @@ h1 {
 
     h1 {
 
-        font-size: 24px;
+        font-size:
+            24px;
 
-        margin-bottom: 22px;
+        margin-bottom:
+            22px;
+    }
+
+
+    .winkel-knop {
+
+        font-size:
+            13px;
+
+        padding:
+            10px 6px;
     }
 
 
@@ -922,13 +1305,15 @@ h1 {
         grid-template-columns:
             22px 1fr;
 
-        gap: 8px;
+        gap:
+            8px;
     }
 
 
     .product-naam {
 
-        font-size: 16px;
+        font-size:
+            16px;
     }
 
 
@@ -950,4 +1335,5 @@ h1 {
         justify-self:
             start;
     }
+
 }

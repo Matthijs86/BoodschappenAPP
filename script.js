@@ -22,8 +22,8 @@ const winkelInput =
 const toevoegenKnop =
     document.getElementById("toevoegen");
 
-const boodschappenLijst =
-    document.getElementById("boodschappenLijst");
+const winkelsContainer =
+    document.getElementById("winkelsContainer");
 
 const legeLijst =
     document.getElementById("legeLijst");
@@ -60,100 +60,89 @@ const winkels = [
 
 
 // ======================================
-// OPSLAG LADEN
+// PRODUCTEN LADEN
 // ======================================
 
-function productenLaden() {
+let producten = [];
 
-    try {
+try {
 
-        const opgeslagen =
-            localStorage.getItem(
-                opslagNaam
+    const opgeslagenProducten =
+        localStorage.getItem(
+            opslagNaam
+        );
+
+
+    if (opgeslagenProducten) {
+
+        const geladen =
+            JSON.parse(
+                opgeslagenProducten
             );
 
 
-        if (!opgeslagen) {
+        if (Array.isArray(laden)) {
 
-            return [];
-
-        }
-
-
-        const data =
-            JSON.parse(opgeslagen);
-
-
-        if (!Array.isArray(data)) {
-
-            return [];
+            producten = geladen;
 
         }
-
-
-        return data;
-
-    } catch (error) {
-
-        console.error(
-            "Fout bij laden boodschappen:",
-            error
-        );
-
-        return [];
 
     }
+
+} catch (error) {
+
+    console.error(
+        "Fout bij laden boodschappen:",
+        error
+    );
+
+    producten = [];
 
 }
 
 
-let producten =
-    productenLaden();
-
-
 // ======================================
-// BESTAANDE PRODUCTEN AANPASSEN
+// OUDE PRODUCTEN OMZETTEN
 // ======================================
 //
-// Producten uit de oude versie hadden
+// Producten uit de vorige versie hadden
 // nog geen winkel.
 //
-// Deze krijgen automatisch
-// Albert Heijn.
-//
+// Deze worden automatisch bij Albert Heijn
+// geplaatst zodat niets verloren gaat.
+// ======================================
 
 producten =
-    producten.map(product => {
+    producten.map(
+        product => {
 
-        return {
+            return {
 
-            naam:
-                product.naam || "",
+                naam:
+                    product.naam || "",
 
-            aantal:
-                Number(product.aantal) > 0
-                    ? Number(product.aantal)
-                    : 1,
+                aantal:
+                    Number(product.aantal) > 0
+                        ? Number(product.aantal)
+                        : 1,
 
-            eenheid:
-                product.eenheid || "st",
+                eenheid:
+                    product.eenheid || "st",
 
-            winkel:
-                winkels.includes(
-                    product.winkel
-                )
-                    ? product.winkel
-                    : "Albert Heijn",
+                winkel:
+                    winkels.includes(
+                        product.winkel
+                    )
+                        ? product.winkel
+                        : "Albert Heijn",
 
-            gekocht:
-                product.gekocht === true
+                gekocht:
+                    product.gekocht === true
 
-        };
+            };
 
-    });
-
-
-slaProductenOp();
+        }
+    );
 
 
 // ======================================
@@ -194,9 +183,13 @@ function slaProductenOp() {
 // STAPGROOTTE
 // ======================================
 
-function bepaalStap(eenheid) {
+function bepaalStap(
+    eenheid
+) {
 
-    if (eenheid === "st") {
+    if (
+        eenheid === "st"
+    ) {
 
         return 1;
 
@@ -222,16 +215,22 @@ function bepaalStap(eenheid) {
 // EENHEID WEERGEVEN
 // ======================================
 
-function toonEenheid(eenheid) {
+function toonEenheid(
+    eenheid
+) {
 
-    if (eenheid === "g") {
+    if (
+        eenheid === "g"
+    ) {
 
         return "g";
 
     }
 
 
-    if (eenheid === "ml") {
+    if (
+        eenheid === "ml"
+    ) {
 
         return "ml";
 
@@ -244,19 +243,59 @@ function toonEenheid(eenheid) {
 
 
 // ======================================
-// WINKEL EMOJI
+// WINKEL ICOON
 // ======================================
 
-function winkelEmoji(winkel) {
+function winkelIcoon(
+    winkel
+) {
 
-    if (winkel === "Toko") {
+    if (
+        winkel === "Albert Heijn"
+    ) {
 
-        return "🏮";
+        return "🛒";
 
     }
 
 
-    return "🛒";
+    if (
+        winkel === "Aldi"
+    ) {
+
+        return "🔵";
+
+    }
+
+
+    if (
+        winkel === "Toko"
+    ) {
+
+        return "🌶️";
+
+    }
+
+
+    if (
+        winkel === "Jumbo"
+    ) {
+
+        return "🟡";
+
+    }
+
+
+    if (
+        winkel === "Lidl"
+    ) {
+
+        return "🔵";
+
+    }
+
+
+    return "🏪";
 
 }
 
@@ -265,12 +304,14 @@ function winkelEmoji(winkel) {
 // WINKEL KLASSE
 // ======================================
 
-function winkelKlasse(winkel) {
+function winkelKlasse(
+    winkel
+) {
 
     return winkel
         .toLowerCase()
         .replace(
-            /[^a-z0-9]+/g,
+            /\s+/g,
             "-"
         );
 
@@ -283,16 +324,28 @@ function winkelKlasse(winkel) {
 
 function toonProducten() {
 
-    boodschappenLijst.innerHTML = "";
+    winkelsContainer.innerHTML =
+        "";
 
 
-    if (producten.length === 0) {
+    // ----------------------------------
+    // CONTROLEREN OF LIJST LEEG IS
+    // ----------------------------------
 
-        controleerLegeLijst();
+    if (
+        producten.length === 0
+    ) {
+
+        legeLijst.style.display =
+            "block";
 
         return;
 
     }
+
+
+    legeLijst.style.display =
+        "none";
 
 
     // ----------------------------------
@@ -310,9 +363,6 @@ function toonProducten() {
                 );
 
 
-            // Geen producten?
-            // Dan geen winkelkop tonen.
-
             if (
                 winkelProducten.length === 0
             ) {
@@ -329,9 +379,6 @@ function toonProducten() {
 
         }
     );
-
-
-    controleerLegeLijst();
 
 }
 
@@ -352,17 +399,12 @@ function maakWinkelSectie(
 
 
     winkelSectie.className =
-        "winkel-sectie";
+        `winkel-sectie ${winkelKlasse(winkel)}`;
 
 
-    winkelSectie.classList.add(
-        winkelKlasse(winkel)
-    );
-
-
-    // ==================================
+    // ----------------------------------
     // WINKEL KOP
-    // ==================================
+    // ----------------------------------
 
     const winkelKop =
         document.createElement(
@@ -381,7 +423,7 @@ function maakWinkelSectie(
 
 
     winkelNaam.textContent =
-        `${winkelEmoji(winkel)} ${winkel}`;
+        `${winkelIcoon(winkel)} ${winkel}`;
 
 
     const aantal =
@@ -406,7 +448,6 @@ function maakWinkelSectie(
         winkelNaam
     );
 
-
     winkelKop.appendChild(
         aantal
     );
@@ -417,17 +458,17 @@ function maakWinkelSectie(
     );
 
 
-    // ==================================
-    // PRODUCTEN
-    // ==================================
+    // ----------------------------------
+    // PRODUCTLIJST
+    // ----------------------------------
 
-    const productenContainer =
+    const productLijst =
         document.createElement(
-            "div"
+            "ul"
         );
 
 
-    productenContainer.className =
+    productLijst.className =
         "winkel-producten";
 
 
@@ -440,10 +481,15 @@ function maakWinkelSectie(
                 );
 
 
-            maakProductElement(
-                product,
-                echteIndex,
-                productenContainer
+            const productElement =
+                maakProductElement(
+                    product,
+                    echteIndex
+                );
+
+
+            productLijst.appendChild(
+                productElement
             );
 
         }
@@ -451,11 +497,11 @@ function maakWinkelSectie(
 
 
     winkelSectie.appendChild(
-        productenContainer
+        productLijst
     );
 
 
-    boodschappenLijst.appendChild(
+    winkelsContainer.appendChild(
         winkelSectie
     );
 
@@ -468,22 +514,22 @@ function maakWinkelSectie(
 
 function maakProductElement(
     product,
-    index,
-    container
+    index
 ) {
 
     const lijstItem =
         document.createElement(
-            "div"
+            "li"
         );
 
 
-    lijstItem.classList.add(
-        "product"
-    );
+    lijstItem.className =
+        "product";
 
 
-    if (product.gekocht) {
+    if (
+        product.gekocht
+    ) {
 
         lijstItem.classList.add(
             "gekocht"
@@ -510,8 +556,10 @@ function maakProductElement(
         product.gekocht;
 
 
-    checkbox.title =
-        "Markeer als gekocht";
+    checkbox.setAttribute(
+        "aria-label",
+        `${product.naam} gekocht`
+    );
 
 
     checkbox.addEventListener(
@@ -553,17 +601,21 @@ function maakProductElement(
 
 
     // ==================================
-    // AANTAL BEDIENING
+    // HOEVEELHEID
     // ==================================
 
-    const aantalBediening =
+    const hoeveelheid =
         document.createElement(
-            "div"
+            "span"
         );
 
 
-    aantalBediening.className =
-        "aantal-bediening";
+    hoeveelheid.className =
+        "hoeveelheid";
+
+
+    hoeveelheid.textContent =
+        `${product.aantal} ${toonEenheid(product.eenheid)}`;
 
 
     // ==================================
@@ -600,12 +652,8 @@ function maakProductElement(
 
             product.aantal =
                 Math.max(
-
                     stap,
-
-                    product.aantal -
-                    stap
-
+                    product.aantal - stap
                 );
 
 
@@ -615,28 +663,6 @@ function maakProductElement(
 
         }
     );
-
-
-    // ==================================
-    // HOEVEELHEID
-    // ==================================
-
-    const hoeveelheid =
-        document.createElement(
-            "span"
-        );
-
-
-    hoeveelheid.className =
-        "hoeveelheid";
-
-
-    hoeveelheid.textContent =
-        `${product.aantal} ${
-            toonEenheid(
-                product.eenheid
-            )
-        }`;
 
 
     // ==================================
@@ -683,15 +709,27 @@ function maakProductElement(
     );
 
 
+    // ==================================
+    // AANTAL BEDIENING
+    // ==================================
+
+    const aantalBediening =
+        document.createElement(
+            "div"
+        );
+
+
+    aantalBediening.className =
+        "aantal-bediening";
+
+
     aantalBediening.appendChild(
         minKnop
     );
 
-
     aantalBediening.appendChild(
         hoeveelheid
     );
-
 
     aantalBediening.appendChild(
         plusKnop
@@ -730,7 +768,9 @@ function maakProductElement(
                 );
 
 
-            if (!bevestiging) {
+            if (
+                !bevestiging
+            ) {
 
                 return;
 
@@ -775,9 +815,7 @@ function maakProductElement(
     );
 
 
-    container.appendChild(
-        lijstItem
-    );
+    return lijstItem;
 
 }
 
@@ -806,11 +844,13 @@ function productToevoegen() {
         winkelInput.value;
 
 
-    // ==================================
-    // GEEN PRODUCT
-    // ==================================
+    // ----------------------------------
+    // PRODUCT CONTROLEREN
+    // ----------------------------------
 
-    if (naam === "") {
+    if (
+        naam === ""
+    ) {
 
         productInput.focus();
 
@@ -819,9 +859,9 @@ function productToevoegen() {
     }
 
 
-    // ==================================
+    // ----------------------------------
     // AANTAL CONTROLEREN
-    // ==================================
+    // ----------------------------------
 
     if (
         isNaN(aantal) ||
@@ -833,9 +873,9 @@ function productToevoegen() {
     }
 
 
-    // ==================================
-    // GRAM / ML
-    // ==================================
+    // ----------------------------------
+    // GRAM / ML AFRONDEN
+    // ----------------------------------
 
     if (
         eenheid === "g" ||
@@ -848,7 +888,9 @@ function productToevoegen() {
             ) * 50;
 
 
-        if (aantal < 50) {
+        if (
+            aantal < 50
+        ) {
 
             aantal = 50;
 
@@ -857,9 +899,9 @@ function productToevoegen() {
     }
 
 
-    // ==================================
+    // ----------------------------------
     // BESTAAND PRODUCT ZOEKEN
-    // ==================================
+    // ----------------------------------
 
     const bestaandProduct =
         producten.find(
@@ -878,22 +920,23 @@ function productToevoegen() {
 
                 product.winkel ===
                 winkel
-
         );
 
 
-    // ==================================
+    // ----------------------------------
     // BESTAAND PRODUCT
-    // ==================================
+    // ----------------------------------
 
-    if (bestaandProduct) {
+    if (
+        bestaandProduct
+    ) {
 
         bestaandProduct.aantal +=
             aantal;
 
 
-        // Opnieuw toevoegen betekent
-        // dat het product weer nodig is.
+        // Opnieuw toevoegen =
+        // weer nodig
 
         bestaandProduct.gekocht =
             false;
@@ -901,9 +944,9 @@ function productToevoegen() {
     }
 
 
-    // ==================================
+    // ----------------------------------
     // NIEUW PRODUCT
-    // ==================================
+    // ----------------------------------
 
     else {
 
@@ -929,35 +972,38 @@ function productToevoegen() {
     }
 
 
-    // ==================================
+    // ----------------------------------
     // OPSLAAN
-    // ==================================
+    // ----------------------------------
 
     slaProductenOp();
 
 
-    // ==================================
-    // LIJST TONEN
-    // ==================================
+    // ----------------------------------
+    // WEERGEVEN
+    // ----------------------------------
 
     toonProducten();
 
 
-    // ==================================
+    // ----------------------------------
     // INPUT RESETTEN
-    // ==================================
+    // ----------------------------------
 
     productInput.value =
         "";
 
     aantalInput.value =
-        1;
+        "1";
 
     eenheidInput.value =
         "st";
 
-    winkelInput.value =
-        "Albert Heijn";
+
+    // Winkel blijft staan.
+    // Dat is handig als je meerdere
+    // producten bij dezelfde winkel
+    // wilt toevoegen.
 
 
     productInput.focus();
@@ -974,8 +1020,7 @@ productInput.addEventListener(
     event => {
 
         if (
-            event.key ===
-            "Enter"
+            event.key === "Enter"
         ) {
 
             event.preventDefault();
@@ -997,8 +1042,7 @@ aantalInput.addEventListener(
     event => {
 
         if (
-            event.key ===
-            "Enter"
+            event.key === "Enter"
         ) {
 
             event.preventDefault();
@@ -1020,8 +1064,7 @@ winkelInput.addEventListener(
     event => {
 
         if (
-            event.key ===
-            "Enter"
+            event.key === "Enter"
         ) {
 
             event.preventDefault();
@@ -1061,15 +1104,15 @@ allesWissenKnop.addEventListener(
         }
 
 
-        const bevestigen =
+        const bevestiging =
             confirm(
-
                 "Weet je zeker dat je de hele boodschappenlijst wilt wissen?"
-
             );
 
 
-        if (!bevestigen) {
+        if (
+            !bevestiging
+        ) {
 
             return;
 
@@ -1086,29 +1129,6 @@ allesWissenKnop.addEventListener(
 
     }
 );
-
-
-// ======================================
-// LEGE LIJST
-// ======================================
-
-function controleerLegeLijst() {
-
-    if (
-        producten.length === 0
-    ) {
-
-        legeLijst.style.display =
-            "block";
-
-    } else {
-
-        legeLijst.style.display =
-            "none";
-
-    }
-
-}
 
 
 // ======================================

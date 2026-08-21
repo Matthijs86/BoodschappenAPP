@@ -26,16 +26,17 @@ body {
         Helvetica,
         sans-serif;
 
-    color: #f5f7fa;
+    color: #f5f5f5;
 
     background:
         linear-gradient(
             135deg,
-            #0f172a,
-            #1e293b,
-            #263449,
-            #172033
+            #0b1220,
+            #172235,
+            #243247,
+            #141d2d
         );
+
 }
 
 
@@ -47,16 +48,16 @@ body {
 
     width: 100%;
 
-    max-width: 650px;
+    max-width: 700px;
 
     padding: 35px;
 
     background:
-        rgba(42, 47, 58, 0.97);
+        rgba(38, 42, 50, 0.97);
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.12);
+        rgba(255, 255, 255, 0.10);
 
     border-radius: 24px;
 
@@ -66,6 +67,7 @@ body {
 
     animation:
         appBinnenkomen 0.5s ease;
+
 }
 
 
@@ -111,15 +113,16 @@ h1 {
 
     font-weight: 900;
 
-    letter-spacing: -0.5px;
+    letter-spacing:
+        -0.5px;
 
     background:
         linear-gradient(
             90deg,
-            #38bdf8,
-            #818cf8,
+            #3d8bfd,
+            #8b5cf6,
             #22c55e,
-            #38bdf8
+            #3d8bfd
         );
 
     background-size:
@@ -136,8 +139,13 @@ h1 {
 
     animation:
         titelKleur 5s linear infinite;
+
 }
 
+
+/* ==========================
+   TITEL ANIMATIE
+========================== */
 
 @keyframes titelKleur {
 
@@ -159,224 +167,51 @@ h1 {
 
 
 /* ==========================
-   WINKEL SECTIE
-========================== */
-
-.winkel-sectie {
-
-    margin-bottom: 25px;
-
-    padding: 18px;
-
-    background:
-        rgba(255, 255, 255, 0.055);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.12);
-
-    border-radius: 16px;
-}
-
-
-.winkel-sectie h2 {
-
-    margin:
-        0 0 14px;
-
-    font-size: 18px;
-
-    color: #f8fafc;
-
-}
-
-
-/* ==========================
-   WINKEL KNOPPEN
-========================== */
-
-.winkel-knoppen {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 10px;
-}
-
-
-.winkel-knop {
-
-    padding: 12px 10px;
-
-    border:
-        2px solid
-        #475569;
-
-    border-radius: 10px;
-
-    background:
-        #334155;
-
-    color: #f8fafc;
-
-    font-size: 15px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-.winkel-knop:hover {
-
-    background:
-        #3f4f65;
-
-    border-color:
-        #60a5fa;
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 5px 15px
-        rgba(59, 130, 246, 0.2);
-}
-
-
-.winkel-knop.actief {
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #3b82f6
-        );
-
-    border-color:
-        #60a5fa;
-
-    box-shadow:
-        0 0 0 2px
-        rgba(96, 165, 250, 0.2),
-
-        0 6px 18px
-        rgba(59, 130, 246, 0.3);
-
-    transform:
-        translateY(-1px);
-}
-
-
-/* ==========================
-   ALLE WINKELS
-========================== */
-
-.alle-winkels-knop {
-
-    width: 100%;
-
-    margin-top: 10px;
-
-    padding: 12px;
-
-    border:
-        2px solid
-        #64748b;
-
-    border-radius: 10px;
-
-    background:
-        #475569;
-
-    color: white;
-
-    font-size: 15px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.alle-winkels-knop:hover {
-
-    background:
-        #526277;
-
-    border-color:
-        #93c5fd;
-
-    transform:
-        translateY(-1px);
-
-}
-
-
-.alle-winkels-knop.actief {
-
-    background:
-        linear-gradient(
-            135deg,
-            #0891b2,
-            #06b6d4
-        );
-
-    border-color:
-        #67e8f9;
-
-    box-shadow:
-        0 5px 18px
-        rgba(6, 182, 212, 0.25);
-}
-
-
-/* ==========================
    INVOER
 ========================== */
 
 .invoer {
 
-    display: flex;
+    display: grid;
+
+    grid-template-columns:
+        85px
+        110px
+        1fr
+        160px;
 
     gap: 10px;
 
-    margin-bottom: 12px;
+    margin-bottom: 28px;
+
 }
 
 
 /* ==========================
-   INPUTS
+   INPUTS EN SELECTS
 ========================== */
 
 #aantalInput,
 #eenheidInput,
-#productInput {
+#productInput,
+#winkelInput {
+
+    width: 100%;
+
+    min-height: 50px;
+
+    padding:
+        13px 12px;
 
     border:
-        2px solid
-        #4b5563;
+        2px solid #505762;
 
-    border-radius:
-        10px;
+    border-radius: 10px;
 
     outline: none;
 
     background:
-        #374151;
+        #30353e;
 
     color:
         #ffffff;
@@ -388,62 +223,63 @@ h1 {
         border-color 0.2s ease,
         box-shadow 0.2s ease,
         transform 0.15s ease;
+
 }
 
 
 #aantalInput {
 
-    width: 85px;
+    text-align:
+        center;
 
-    padding:
-        14px 10px;
-
-    text-align: center;
-}
-
-
-#eenheidInput {
-
-    width: 105px;
-
-    padding:
-        14px 10px;
-
-    cursor: pointer;
 }
 
 
 #productInput {
 
-    flex: 1;
+    padding-left:
+        16px;
 
-    min-width: 0;
-
-    padding:
-        14px 16px;
 }
 
 
 #productInput::placeholder {
 
     color:
-        #a8b0bd;
+        #aeb4bd;
+
 }
 
 
 #aantalInput:focus,
 #eenheidInput:focus,
-#productInput:focus {
+#productInput:focus,
+#winkelInput:focus {
 
     border-color:
-        #38bdf8;
+        #3d8bfd;
 
     box-shadow:
         0 0 0 3px
-        rgba(56, 189, 248, 0.15);
+        rgba(
+            61,
+            139,
+            253,
+            0.16
+        );
 
     transform:
         translateY(-1px);
+
+}
+
+
+#eenheidInput,
+#winkelInput {
+
+    cursor:
+        pointer;
+
 }
 
 
@@ -453,10 +289,14 @@ h1 {
 
 #toevoegen {
 
-    padding:
-        0 20px;
+    min-height:
+        50px;
 
-    border: none;
+    padding:
+        0 16px;
+
+    border:
+        none;
 
     border-radius:
         10px;
@@ -482,12 +322,18 @@ h1 {
 
     box-shadow:
         0 5px 15px
-        rgba(34, 197, 94, 0.2);
+        rgba(
+            34,
+            197,
+            94,
+            0.18
+        );
 
     transition:
         background 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
+
 }
 
 
@@ -497,7 +343,7 @@ h1 {
         linear-gradient(
             135deg,
             #15803d,
-            #22c55e
+            #16a34a
         );
 
     transform:
@@ -505,7 +351,13 @@ h1 {
 
     box-shadow:
         0 8px 20px
-        rgba(34, 197, 94, 0.3);
+        rgba(
+            34,
+            197,
+            94,
+            0.28
+        );
+
 }
 
 
@@ -513,59 +365,185 @@ h1 {
 
     transform:
         scale(0.96);
+
 }
 
 
 /* ==========================
-   GEKOZEN WINKEL
+   WINKEL SECTIE
 ========================== */
 
-.gekozen-winkel {
+.winkel-sectie {
 
     margin-bottom:
-        14px;
+        22px;
 
-    padding:
-        9px 12px;
+    animation:
+        winkelBinnen 0.3s ease;
 
-    border-radius:
-        8px;
+}
 
-    background:
-        rgba(56, 189, 248, 0.10);
 
-    border:
-        1px solid
-        rgba(56, 189, 248, 0.25);
+@keyframes winkelBinnen {
 
-    color:
-        #7dd3fc;
+    from {
 
-    font-size:
-        14px;
+        opacity: 0;
 
-    font-weight:
-        bold;
+        transform:
+            translateY(8px);
 
-    text-align:
-        center;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
 }
 
 
 /* ==========================
-   LIJST
+   WINKEL KOP
 ========================== */
 
-#boodschappenLijst {
+.winkel-kop {
 
-    list-style:
-        none;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
 
     padding:
-        0;
+        12px 15px;
+
+    margin-bottom:
+        8px;
+
+    border-radius:
+        12px;
+
+    background:
+        #303640;
+
+    border-left:
+        5px solid #3d8bfd;
+
+    box-shadow:
+        0 4px 12px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+
+}
+
+
+.winkel-kop h2 {
 
     margin:
         0;
+
+    font-size:
+        19px;
+
+    font-weight:
+        800;
+
+}
+
+
+.winkel-aantal {
+
+    font-size:
+        13px;
+
+    color:
+        #b8c0ca;
+
+    white-space:
+        nowrap;
+
+}
+
+
+/* ==========================
+   WINKEL KLEUREN
+========================== */
+
+.winkel-sectie.albert-heijn
+.winkel-kop {
+
+    border-left-color:
+        #3d8bfd;
+
+}
+
+
+.winkel-sectie.aldi
+.winkel-kop {
+
+    border-left-color:
+        #38bdf8;
+
+}
+
+
+.winkel-sectie.toko
+.winkel-kop {
+
+    border-left-color:
+        #f59e0b;
+
+}
+
+
+.winkel-sectie.jumbo
+.winkel-kop {
+
+    border-left-color:
+        #facc15;
+
+}
+
+
+.winkel-sectie.lidl
+.winkel-kop {
+
+    border-left-color:
+        #a78bfa;
+
+}
+
+
+/* ==========================
+   PRODUCTEN
+========================== */
+
+.winkel-producten {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        8px;
+
 }
 
 
@@ -585,20 +563,17 @@ h1 {
         12px;
 
     padding:
-        14px;
-
-    margin-bottom:
-        10px;
+        12px 14px;
 
     background:
-        #374151;
+        #30353e;
 
     border:
         1px solid
-        #4b5563;
+        #464d57;
 
     border-radius:
-        12px;
+        11px;
 
     transition:
         background 0.2s ease,
@@ -608,6 +583,7 @@ h1 {
 
     animation:
         productBinnen 0.25s ease;
+
 }
 
 
@@ -639,13 +615,19 @@ h1 {
 .product:hover {
 
     background:
-        #414b5b;
+        #373d47;
 
     border-color:
-        rgba(56, 189, 248, 0.45);
+        rgba(
+            61,
+            139,
+            253,
+            0.40
+        );
 
     transform:
         translateX(2px);
+
 }
 
 
@@ -665,13 +647,14 @@ h1 {
         0;
 
     accent-color:
-        #22c55e;
+        #3d8bfd;
 
     cursor:
         pointer;
 
     transition:
         transform 0.15s ease;
+
 }
 
 
@@ -679,29 +662,7 @@ h1 {
 
     transform:
         scale(1.15);
-}
 
-
-/* ==========================
-   NAAM CONTAINER
-========================== */
-
-.naam-container {
-
-    flex:
-        1;
-
-    min-width:
-        0;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    gap:
-        3px;
 }
 
 
@@ -711,11 +672,18 @@ h1 {
 
 .product-naam {
 
+    flex:
+        1;
+
+    min-width:
+        0;
+
     font-size:
         17px;
 
     word-break:
         break-word;
+
 }
 
 
@@ -725,24 +693,8 @@ h1 {
         line-through;
 
     color:
-        #9ca3af;
-}
+        #8b919a;
 
-
-/* ==========================
-   PRODUCT WINKEL
-========================== */
-
-.product-winkel {
-
-    color:
-        #7dd3fc;
-
-    font-size:
-        11px;
-
-    font-weight:
-        bold;
 }
 
 
@@ -759,10 +711,11 @@ h1 {
         center;
 
     gap:
-        6px;
+        5px;
 
     flex-shrink:
         0;
+
 }
 
 
@@ -773,13 +726,13 @@ h1 {
 .hoeveelheid {
 
     min-width:
-        65px;
+        62px;
 
     text-align:
         center;
 
     font-size:
-        16px;
+        15px;
 
     font-weight:
         bold;
@@ -789,6 +742,7 @@ h1 {
 
     white-space:
         nowrap;
+
 }
 
 
@@ -820,7 +774,7 @@ h1 {
         white;
 
     font-size:
-        22px;
+        21px;
 
     font-weight:
         bold;
@@ -844,27 +798,35 @@ h1 {
         background 0.2s ease,
         transform 0.15s ease,
         box-shadow 0.2s ease;
+
 }
 
 
 .aantal-knop:hover {
 
     background:
-        #2563eb;
+        #246edb;
 
     transform:
         scale(1.08);
 
     box-shadow:
         0 4px 10px
-        rgba(61, 139, 253, 0.3);
+        rgba(
+            61,
+            139,
+            253,
+            0.30
+        );
+
 }
 
 
 .aantal-knop:active {
 
     transform:
-        scale(0.9);
+        scale(0.90);
+
 }
 
 
@@ -875,7 +837,7 @@ h1 {
 .verwijder {
 
     padding:
-        8px 11px;
+        8px 10px;
 
     border:
         none;
@@ -884,7 +846,7 @@ h1 {
         8px;
 
     background:
-        #ef4444;
+        #dc3545;
 
     color:
         white;
@@ -902,20 +864,27 @@ h1 {
         background 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
+
 }
 
 
 .verwijder:hover {
 
     background:
-        #dc2626;
+        #b02a37;
 
     transform:
         scale(1.07);
 
     box-shadow:
         0 4px 10px
-        rgba(239, 68, 68, 0.3);
+        rgba(
+            220,
+            53,
+            69,
+            0.30
+        );
+
 }
 
 
@@ -923,6 +892,7 @@ h1 {
 
     transform:
         scale(0.93);
+
 }
 
 
@@ -933,7 +903,8 @@ h1 {
 .product.gekocht {
 
     opacity:
-        0.55;
+        0.50;
+
 }
 
 
@@ -950,10 +921,11 @@ h1 {
         center;
 
     color:
-        #aeb7c5;
+        #aeb4bd;
 
     font-size:
         15px;
+
 }
 
 
@@ -979,7 +951,7 @@ h1 {
         10px;
 
     background:
-        #ef4444;
+        #dc3545;
 
     color:
         white;
@@ -997,20 +969,27 @@ h1 {
         background 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
+
 }
 
 
 #allesWissen:hover {
 
     background:
-        #dc2626;
+        #b02a37;
 
     transform:
         translateY(-2px);
 
     box-shadow:
         0 6px 15px
-        rgba(239, 68, 68, 0.25);
+        rgba(
+            220,
+            53,
+            69,
+            0.25
+        );
+
 }
 
 
@@ -1018,6 +997,7 @@ h1 {
 
     transform:
         scale(0.97);
+
 }
 
 
@@ -1028,7 +1008,7 @@ h1 {
 .footer {
 
     margin-top:
-        20px;
+        22px;
 
     text-align:
         center;
@@ -1043,7 +1023,8 @@ h1 {
         0.8px;
 
     color:
-        #94a3b8;
+        #8f98a5;
+
 }
 
 
@@ -1051,7 +1032,7 @@ h1 {
    MOBIEL
 ========================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     body {
 
@@ -1060,6 +1041,7 @@ h1 {
 
         align-items:
             flex-start;
+
     }
 
 
@@ -1073,6 +1055,7 @@ h1 {
 
         border-radius:
             18px;
+
     }
 
 
@@ -1086,45 +1069,13 @@ h1 {
 
         margin-bottom:
             25px;
-    }
-
-
-    /* ==========================
-       WINKELS MOBIEL
-    ========================== */
-
-    .winkel-sectie {
-
-        padding:
-            14px;
 
     }
 
 
-    .winkel-knoppen {
-
-        grid-template-columns:
-            1fr 1fr;
-
-        gap:
-            8px;
-    }
-
-
-    .winkel-knop {
-
-        min-height:
-            46px;
-
-        font-size:
-            14px;
-
-    }
-
-
-    /* ==========================
+    /* ======================
        INVOER MOBIEL
-    ========================== */
+    ====================== */
 
     .invoer {
 
@@ -1135,21 +1086,20 @@ h1 {
             1fr 1fr;
 
         gap:
-            12px;
+            11px;
+
     }
 
 
     #aantalInput,
     #eenheidInput {
 
-        width:
-            100%;
-
         min-height:
             50px;
 
         font-size:
             17px;
+
     }
 
 
@@ -1158,14 +1108,26 @@ h1 {
         grid-column:
             1 / -1;
 
-        width:
-            100%;
+        min-height:
+            52px;
+
+        font-size:
+            17px;
+
+    }
+
+
+    #winkelInput {
+
+        grid-column:
+            1 / -1;
 
         min-height:
             52px;
 
         font-size:
             17px;
+
     }
 
 
@@ -1177,17 +1139,43 @@ h1 {
         min-height:
             52px;
 
-        padding:
-            14px;
-
         font-size:
             17px;
+
     }
 
 
-    /* ==========================
+    /* ======================
+       WINKEL KOP
+    ====================== */
+
+    .winkel-kop {
+
+        padding:
+            11px 13px;
+
+    }
+
+
+    .winkel-kop h2 {
+
+        font-size:
+            18px;
+
+    }
+
+
+    .winkel-aantal {
+
+        font-size:
+            12px;
+
+    }
+
+
+    /* ======================
        PRODUCT MOBIEL
-    ========================== */
+    ====================== */
 
     .product {
 
@@ -1198,10 +1186,11 @@ h1 {
             24px 1fr auto auto;
 
         gap:
-            10px;
+            9px;
 
         padding:
-            13px 10px;
+            12px 9px;
+
     }
 
 
@@ -1212,46 +1201,51 @@ h1 {
 
         font-size:
             16px;
+
     }
 
 
     .aantal-bediening {
 
         gap:
-            4px;
+            3px;
+
     }
 
 
     .hoeveelheid {
 
         min-width:
-            55px;
+            54px;
 
         font-size:
             14px;
+
     }
 
 
     .aantal-knop {
 
         width:
-            34px;
+            33px;
 
         height:
-            34px;
+            33px;
 
         font-size:
             20px;
+
     }
 
 
     .verwijder {
 
         padding:
-            8px 10px;
+            8px 9px;
 
         min-height:
-            34px;
+            33px;
+
     }
 
 
@@ -1262,6 +1256,7 @@ h1 {
 
         font-size:
             16px;
+
     }
 
 }
@@ -1277,6 +1272,7 @@ h1 {
 
         padding:
             20px 14px;
+
     }
 
 
@@ -1287,16 +1283,7 @@ h1 {
 
         margin-bottom:
             22px;
-    }
 
-
-    .winkel-knop {
-
-        font-size:
-            13px;
-
-        padding:
-            10px 6px;
     }
 
 
@@ -1307,6 +1294,7 @@ h1 {
 
         gap:
             8px;
+
     }
 
 
@@ -1314,6 +1302,7 @@ h1 {
 
         font-size:
             16px;
+
     }
 
 
@@ -1324,6 +1313,7 @@ h1 {
 
         justify-content:
             flex-start;
+
     }
 
 
@@ -1334,6 +1324,21 @@ h1 {
 
         justify-self:
             start;
+
+    }
+
+
+    .winkel-kop {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            3px;
+
     }
 
 }

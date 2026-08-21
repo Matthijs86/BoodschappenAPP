@@ -19,6 +19,68 @@
 
         <h1>🛒 Mijn Boodschappenlijst</h1>
 
+
+        <!-- ==========================
+             WINKEL KIEZEN
+        =========================== -->
+
+        <section class="winkel-sectie">
+
+            <h2>🏪 Winkel</h2>
+
+            <div class="winkel-knoppen">
+
+                <button
+                    class="winkel-knop"
+                    data-winkel="Albert Heijn"
+                >
+                    🟦 Albert Heijn
+                </button>
+
+                <button
+                    class="winkel-knop"
+                    data-winkel="Aldi"
+                >
+                    🟩 Aldi
+                </button>
+
+                <button
+                    class="winkel-knop"
+                    data-winkel="Toko"
+                >
+                    🌶️ Toko
+                </button>
+
+                <button
+                    class="winkel-knop"
+                    data-winkel="Jumbo"
+                >
+                    🟨 Jumbo
+                </button>
+
+                <button
+                    class="winkel-knop"
+                    data-winkel="Lidl"
+                >
+                    🔵 Lidl
+                </button>
+
+            </div>
+
+            <button
+                id="alleWinkelsKnop"
+                class="alle-winkels-knop actief"
+            >
+                🛒 Alle winkels
+            </button>
+
+        </section>
+
+
+        <!-- ==========================
+             INVOER
+        =========================== -->
+
         <div class="invoer">
 
             <input
@@ -31,9 +93,19 @@
             >
 
             <select id="eenheidInput">
-                <option value="st">stuks</option>
-                <option value="g">gram</option>
-                <option value="ml">ml</option>
+
+                <option value="st">
+                    stuks
+                </option>
+
+                <option value="g">
+                    gram
+                </option>
+
+                <option value="ml">
+                    ml
+                </option>
+
             </select>
 
             <input
@@ -44,51 +116,99 @@
             >
 
             <button id="toevoegen">
-                Toevoegen
+                ➕ Toevoegen
             </button>
 
         </div>
 
+
+        <!-- ==========================
+             GESELECTEERDE WINKEL
+        =========================== -->
+
+        <div
+            id="gekozenWinkel"
+            class="gekozen-winkel"
+        >
+            🛒 Alle winkels
+        </div>
+
+
+        <!-- ==========================
+             BOODSCHAPPEN
+        =========================== -->
+
         <ul id="boodschappenLijst"></ul>
+
 
         <p id="legeLijst">
             Je boodschappenlijst is nog leeg.
         </p>
 
+
+        <!-- ==========================
+             ALLES WISSEN
+        =========================== -->
+
         <button id="allesWissen">
             🗑️ Alles wissen
         </button>
 
+
+        <!-- ==========================
+             FOOTER
+        =========================== -->
+
+        <div class="footer">
+            Made by Matthijs Karst Boersma
+        </div>
+
     </main>
+
 
     <script src="./script.js"></script>
 
+
+    <!-- ==========================
+         SERVICE WORKER
+    =========================== -->
+
     <script>
+
         if ("serviceWorker" in navigator) {
 
-            window.addEventListener("load", () => {
+            window.addEventListener(
+                "load",
+                () => {
 
-                navigator.serviceWorker.register("./service-worker.js")
-                    .then(registration => {
+                    navigator.serviceWorker
+                        .register("./service-worker.js")
+                        .then(
+                            registration => {
 
-                        console.log(
-                            "Service Worker actief:",
-                            registration.scope
+                                console.log(
+                                    "Service Worker actief:",
+                                    registration.scope
+                                );
+
+                            }
+                        )
+                        .catch(
+                            error => {
+
+                                console.error(
+                                    "Service Worker fout:",
+                                    error
+                                );
+
+                            }
                         );
 
-                    })
-                    .catch(error => {
-
-                        console.error(
-                            "Service Worker fout:",
-                            error
-                        );
-
-                    });
-
-            });
+                }
+            );
 
         }
+
     </script>
 
 </body>
